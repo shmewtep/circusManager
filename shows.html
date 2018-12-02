@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<!--Stylesheets-->
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Firebase App is always required and must be first -->
+    <!-- Add additional services that you want to use -->
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
+        authDomain: "circus-manager-a607b.firebaseapp.com",
+        databaseURL: "https://circus-manager-a607b.firebaseio.com",
+        projectId: "circus-manager-a607b",
+        storageBucket: "circus-manager-a607b.appspot.com",
+        messagingSenderId: "547116975201"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+	<!--Document title script-->
+
+	<script>
+		document.title = "Shows"
+	</script>
+
+</head>
+
+<body>
+
+	<!--Background-->
+
+    <div class="bgimage">
+
+		<!--Title-->
+
+        <span id="cirquedezack">Cirque de Zack</span>
+
+		<!--Site Nav Menu-->
+
+		<div class="vertical-menu">
+			<a href="#" class="active">Home</a>
+			<a href="#shows.html" class="active">Shows</a>
+			<a href="#feedback.html" class="active">Feedback</a>
+		</div>
+
+    </div>
+</body>
+
+<!--Footer-->
+
+<footer>
+
+	<p>Posted by: CDZ LLC</p>
+    <p>Contact information: <a href="mailto:ccaleb700@gmail.com">
+    cdzmanager@cirquez.com</a>.</p>
+
+</footer>
+
+</html>

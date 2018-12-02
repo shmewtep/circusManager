@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase App is always required and must be first -->
+    <!-- Add additional services that you want to use -->
+    
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
+        authDomain: "circus-manager-a607b.firebaseapp.com",
+        databaseURL: "https://circus-manager-a607b.firebaseio.com",
+        projectId: "circus-manager-a607b",
+        storageBucket: "circus-manager-a607b.appspot.com",
+        messagingSenderId: "547116975201"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+</head>
+
+<body>
+    <div class="bgimage">
+        <span id="cirquedezack">Cirque de Zack</span>
+        <button class="linklike-button" id="login">log in</button>
+        <div class="loginBox" id="loginBox" style="display:none">
+            <button id="btnLoginExit" class="exitButton">&#10006</button>    
+            <h2>Log In Here</h2>
+                <form>
+                    <p>Email</p>
+                    <input type="text" id="txtEmail" name="" placeholder="Enter Email">
+                    <p>Password</p>
+                    <input type="password" id="txtPassword" name="" placeholder="••••••">
+                    <button type="submit" id="btnSignin" class='hideOnSignup' name="" value="Sign In">Sign In</button>
+                    <a id="linkSignup" class='hideOnSignup' href="#">Don't have an account? Sign up here</a><br>
+                    <a class='hideOnSignup' href="#">Forgot Password?</a>
+                    <button id="btnSubmit" type="submit" class='showOnSignup' name="" value="Submit" style="display: none">Submit</button>
+                </form>
+            </div>
+    </div>
+    <script src="circusManager.js"></script>
+</body>
+
+</html>
