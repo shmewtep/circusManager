@@ -1,4 +1,4 @@
-/*const auth = firebase.auth();
+const auth = firebase.auth();
 
 const linkLogout = document.getElementById('linkLogout');
 
@@ -7,7 +7,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("user logged in");
         //document.location.href = 'home.html';
     } else {
-      //document.location.href = 'index.html';
+      document.location.href = 'index.html';
     }
   });
 
@@ -17,6 +17,5 @@ linkLogout.addEventListener('click', e=> {
         promise.catch(e => console.log(e.message));
     if (!firebase.auth().currentUser) {
         console.log("no user, kicking to index page");
-        document.location.href = 'index.html';
     }
-})*/
+});

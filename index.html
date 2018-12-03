@@ -30,18 +30,31 @@
         <button class="linklike-button" id="login">log in</button>
         <div class="loginBox" id="loginBox" style="display:none">
             <button id="btnLoginExit" class="exitButton">&#10006</button>    
-            <h2>Log In Here</h2>
                 
+                <div id='loginForm'>
+                    <h2>Log In Here</h2>
                     <p>Email</p>
                     <input type="text" id="txtEmail" name="" placeholder="Enter Email">
                     <p>Password</p>
                     <input type="password" id="txtPassword" name="" placeholder="••••••">
-                    <button id="btnSignin" class='hideOnSignup' name="" value="Sign In">Sign In</button>
+                    <button id="btnSignin" class='hideOnSignup hoverButton' name="" value="Sign In">Sign In</button>
                     <a id="linkSignup" class='hideOnSignup' href="#">Don't have an account? Sign up here</a><br>
                     <a class='hideOnSignup' href="#">Forgot Password?</a>
-                    <button id="btnSubmit" type="submit" class='showOnSignup' name="" value="Submit" style="display: none">Submit</button>
-                
-            </div>
+                </div>
+
+                <div id='signupForm' style='display:none'>
+                    <p style='margin-top:20px'>Full Name</p>
+                    <input id='txtFirstName' type="text" placeholder='First' style='margin-bottom:6px'><br>
+                    <input id='txtLastName' type="text" placeholder='Last'><br>
+                    <p>Email</p>
+                    <input type="text" id="txtEmailSignup" name="" placeholder="Enter Email">
+                    <p>Password</p>
+                    <input type="password" id="txtPasswordSignup" name="" placeholder="••••••" style='margin-bottom:6px'>
+                    <input type="password" id="txtPasswordConfirm" name="" placeholder="Confirm Password">
+                    <button id='btnSignupSubmit' class='hoverButton'>Submit</button>
+                </div>
+        </div>
+
     </div>
     <script src="circusManager.js"></script>
 </body>
