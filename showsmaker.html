@@ -1,0 +1,130 @@
+<!--
+
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   showsmaker.html
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<!--Stylesheets-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+    <!-- Firebase App is always required and must be first -->
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
+        authDomain: "circus-manager-a607b.firebaseapp.com",
+        databaseURL: "https://circus-manager-a607b.firebaseio.com",
+        projectId: "circus-manager-a607b",
+        storageBucket: "circus-manager-a607b.appspot.com",
+        messagingSenderId: "547116975201"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+	<!--Document title script-->
+	<script>
+		document.title = "CDZ-ShowMaker"
+	</script>
+
+</head>
+
+<body>
+
+    <!--Background-->
+    <div class="bgimage">
+
+        <!--Welcome message-->
+        <p id='welcomeText' style='display:inline'></p>
+
+        <!--Logout button-->
+        <button class="linklike-button" id="linkLogout" style = 'display:inline'>log out</button>
+
+	    <!--Title-->
+        <span id="cirquedezack">Cirque de Zack</span>
+
+        <!--Site Nav Menu-->
+		<div class="vertical-menu">
+                <a href="home.html" id ='btnHome'><button>Home</button></a>
+                <a href="shows.html" id='btnShows'><button>Shows</button></a>
+                <a href="#" id='btnFeedback'><button>Feedback</button></a>
+                <a href id='btnPayroll' style='display:none'><button>Payroll</button></a>
+                <a href id='btnEditShows' style='display:none'><button>Edit Shows</button></a>
+        </div>
+
+        <!-- Create/Delete Menu -->
+        <button class="dangitButton" id="btnCreateShow">Create Show</button>
+        <button class="dagnabitButton" id="btnDeleteShow">Delete Show</button>
+
+        <!--Show Creation form-->
+        <div class="loginBox" id="showCreateBox" style="display:none">
+            <button id="btnshowcreateExit" class="exitButton">&#10006</button>
+            <div id='createshowForm'>
+                <p style='margin-top:20px'>Location</p>
+                <input id='txtCityName' type="text" placeholder='Location' style='margin-bottom:6px'><br>
+                <p>Date</p>
+                <input type="date" id="showDate" name="" placeholder="Enter Date">
+                <p>Time</p>
+                <input type="time" id="showTime" name="" placeholder="Enter Time" style='margin-bottom:6px'>
+                <button id='createShow' class='hoverButton'>Create</button>
+            </div>
+
+        </div>
+
+        <!--Show Deletion form-->
+        <div class="loginBox" id="showDeleteBox" style="display:none">
+            <button id="btnshowdeleteExit" class="exitButton">&#10006</button>
+            <div id='showsDisplay' class='displayBlock'>
+                <ul id='displayShows'>
+                </ul>
+            </div>
+            <div id='showDetails' class='loginBox' style='display:none'>
+                <button id='btnDeleteExit' class='exitButton'>&#10006</button>
+                <div id='deletePane'>
+                    <p id='txtDate'>Date: </p>
+                    <p id='txtLocation'>Location: </p>
+                    <p id='txtTime'>Time: </p>
+                    <button id='deleteShow' class='hoverButton'>Delete</button>
+                </div>
+                <div id='confirmPane' style='display:none'>
+                    <h4 style='color:lightblue'>Show Deleted</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Link to JS file-->
+    <script src="shows.js"></script>
+    
+</body>
+
+<!--Footer-->
+<footer>
+
+	<p>Posted by: CDZ LLC</p>
+    <p>Contact information: <a href="mailto:ccaleb700@gmail.com">
+    cdzmanager@cirquez.com</a>.</p>
+
+</footer>
+
+</html>

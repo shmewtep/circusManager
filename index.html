@@ -1,16 +1,33 @@
+<!--
+
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   index.html
+
+-->
+
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
+
     <!-- Firebase App is always required and must be first -->
     <!-- Add additional services that you want to use -->
-    
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+    <script src="firebase.json"></script>
+    
+    <!--Initialize Firebase-->
     <script>
-    // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
         authDomain: "circus-manager-a607b.firebaseapp.com",
@@ -22,40 +39,54 @@
     firebase.initializeApp(config);
     </script>
 
+    <!--Document title script-->
+    <script>
+		document.title = "CDZ-Login"
+	</script>
+
 </head>
 
 <body>
+
+    <!--Background-->
     <div class="bgimage">
+
+        <!--Site title-->
         <span id="cirquedezack">Cirque de Zack</span>
-        <button class="linklike-button" id="login">log in</button>
+        
+        <!--Login Button-->
+        <button class="linklike-button" id="login" style='display:inline'>log in</button>
         <div class="loginBox" id="loginBox" style="display:none">
-            <button id="btnLoginExit" class="exitButton">&#10006</button>    
+            <button id="btnLoginExit" class="exitButton">&#10006;</button>    
                 
-                <div id='loginForm'>
-                    <h2>Log In Here</h2>
-                    <p>Email</p>
-                    <input type="text" id="txtEmail" name="" placeholder="Enter Email">
-                    <p>Password</p>
-                    <input type="password" id="txtPassword" name="" placeholder="••••••">
-                    <button id="btnSignin" class='hideOnSignup hoverButton' name="" value="Sign In">Sign In</button>
-                    <a id="linkSignup" class='hideOnSignup' href="#">Don't have an account? Sign up here</a><br>
-                    <a class='hideOnSignup' href="#">Forgot Password?</a>
-                </div>
-
-                <div id='signupForm' style='display:none'>
-                    <p style='margin-top:20px'>Full Name</p>
-                    <input id='txtFirstName' type="text" placeholder='First' style='margin-bottom:6px'><br>
-                    <input id='txtLastName' type="text" placeholder='Last'><br>
-                    <p>Email</p>
-                    <input type="text" id="txtEmailSignup" name="" placeholder="Enter Email">
-                    <p>Password</p>
-                    <input type="password" id="txtPasswordSignup" name="" placeholder="••••••" style='margin-bottom:6px'>
-                    <input type="password" id="txtPasswordConfirm" name="" placeholder="Confirm Password">
-                    <button id='btnSignupSubmit' class='hoverButton'>Submit</button>
-                </div>
+            <!--Login Form-->
+            <div id='loginForm'>
+                <h2>Log In Here</h2>
+                <p>Email</p>
+                <input type="text" id="txtEmail" name="" placeholder="Enter Email">
+                <p>Password</p>
+                <input class='loginBoxInput' type="password" id="txtPassword" name="" placeholder="••••••">
+                <button id="btnSignin" class='hideOnSignup hoverButton' name="" value="Sign In">Sign In</button>
+                <a id="linkSignup" class='hideOnSignup' href="#">Don't have an account? Sign up here</a><br>
+                <a class='hideOnSignup' href="#">Forgot Password?</a>
+            </div>
+            
+            <!--Sign up form-->
+            <div id='signupForm' style='display:none'>
+                <p style='margin-top:20px'>Full Name</p>
+                <input id='txtFirstName' type="text" placeholder='First' style='margin-bottom:6px'><br>
+                <input id='txtLastName' type="text" placeholder='Last'><br>
+                <p>Email</p>
+                <input class='loginBoxInput' type="text" id="txtEmailSignup" name="" placeholder="Enter Email">
+                <p>Password</p>
+                <input class='loginBoxInput' type="password" id="txtPasswordSignup" name="" placeholder="••••••" style='margin-bottom:6px'>
+                <input class='loginBoxInput' type="password" id="txtPasswordConfirm" name="" placeholder="Confirm Password">
+                <button id='btnSignupSubmit' class='hoverButton'>Submit</button>
+            </div>
         </div>
-
     </div>
+
+    <!--Link to JS file-->
     <script src="circusManager.js"></script>
 </body>
 

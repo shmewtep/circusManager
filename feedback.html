@@ -1,4 +1,16 @@
-﻿<!DOCTYPE html>
+﻿<!--
+
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   feedback.html
+
+-->
+
+<!DOCTYPE html>
 
 <html lang="en">
 
@@ -20,8 +32,8 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="form.js"></script>
 
 	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
@@ -40,48 +52,57 @@
 
 	<!--Document title script-->
 	<script>
-		document.title = "Feedback"
-	</script>
+		document.title = "CDZ-Feedback"
+    </script>
+
+    <!--Initialize EmailJS-->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_fsQWH1qdm2sUP8hmaruPw");
+        })();
+    </script>
 
 </head>
 
 <body>
 
 	<!--Background-->
-
     <div class="bgimage">
+        <p id='welcomeText' style='display:inline'></p>
+        <button class="linklike-button" id="linkLogout" style = 'display:inline'>log out</button>
 
 		<!--Title-->
-
         <span id="cirquedezack">Cirque de Zack</span>
 
 		<!--Site Nav Menu-->
-
 		<div class="vertical-menu">
-			<a href="#home.html" class="active">Home</a>
-			<a href="#shows.html" class="active">Shows</a>
-			<a href="#" class="active">Feedback</a>
+			<a href="home.html" id ='btnHome'><button>Home</button></a>
+			<a href="shows.html" id='btnShows'><button>Shows</button></a>
+            <a href="#" id='btnFeedback'><button>Feedback</button></a>
+            <a href id='btnPayroll' style='display:none'><button>Payroll</button></a>
+            <a href id='btnEditShows' style='display:none'><button>Edit Shows</button></a>
 		</div>
 
 		<!--Feedback form container-->
-
-		<div class="container">
+		<div class="container" style="margin-bottom: 50px">
             <div class="imagebg"></div>
             <div class="row " style="margin-top: 50px">
                 <div class="col-md-6 col-md-offset-3 form-container">
                     <h2>Performance Feedback</h2> 
                     <p> Please provide your feedback below: </p>
-                    <form role="form" method="post" id="reused_form">
+                    <div role="form" method="post" id="reused_form">
                         <div class="row">
                             <div class="col-sm-12 form-group">
-
-								<label>Please enter the location and date of the show you would like to provide feedback on below.</label>
+                                <label>Please enter the location and date of the show you would like to provide feedback on below.</label>
+                                
 								<!--City input-->
 								<div class="col-sm-6 form-group">
-									<label for="showLoc"> City:</label>
-									<input type="text" class="form-control" id="name" name="name" required>
+									<label for="showLoc" id='city'> City:</label>
+									<input type="text" class="form-control" id="txtCity" name="name" required>
 								</div>
 
+                                <!--Spacing for appearances-->
 								<br>
 								<br>
 								<br>
@@ -89,39 +110,79 @@
 								<br>
 
 								<!--Date selector-->
-
-								<input type="date" id="start" name="trip-start"
+								<input type="date" id="txtDate" name="trip-start"
 									value=new Date()
 									min="2000-01-01" max=new Date()>
 
+                                <!--More spacing for appearances-->
 								<br>
-								<br>
+                                <br>
+                                
+                                <!--Select act to provide feedback for (Radio Buttons)-->
+                                <label>What act are you providing feedback for?</label>
+                                <p>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="clowns" >
+                                        Clowns 
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="contortionists" >
+                                        Contortionists
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="cyr wheel" >
+                                        Cyr Wheel
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="elephants" >
+                                        Elephants
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="fire juggling" >
+                                        Fire Juggling
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="highwire" >
+                                        Highwire
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="human cannonball" >
+                                        Human Cannonball
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="lion taming" >
+                                        Lion Taming
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="radioAct" id="radio_experience" value="trapeze" >
+                                        Trapeze
+                                    </label>
+                                </p>
 
 								<!--Level of experience-->
-
                                 <label>How do you rate your overall experience?</label>
                                 <p>
                                     <label class="radio-inline">
-                                        <input type="radio" name="experience" id="radio_experience" value="bad" >
+                                        <input type="radio" name="radioExperience" id="radio_experience" value="bad" >
                                         Bad 
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="experience" id="radio_experience" value="average" >
+                                        <input type="radio" name="radioExperience" id="radio_experience" value="average" >
                                         Average 
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="experience" id="radio_experience" value="good" >
+                                        <input type="radio" name="radioExperience" id="radio_experience" value="good" >
                                         Good 
                                     </label>
                                 </p>
                             </div>
                         </div>
 
+                        <!--Comments field-->
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="comments"> Comments:</label>
-								<!--Comments field-->
-                                <textarea class="form-control" type="textarea" name="comments" id="comments" placeholder="Your Comments" maxlength="6000" rows="7"></textarea>
+                                <textarea class="form-control" type="textarea" name="comments" id="txtComments" placeholder="Your Comments" maxlength="6000" rows="7"></textarea>
                             </div>
                         </div>
 
@@ -130,31 +191,34 @@
 							<!--Name input-->
                             <div class="col-sm-6 form-group">
                                 <label for="name"> Your Name (Optional):</label>
-                                <input type="text" class="form-control" id="name" name="name" required>
+                                <input type="text" class="form-control" id="txtFeedbackName" name="name" required>
                             </div>
 
 							<!--Email input-->
                             <div class="col-sm-6 form-group">
                                 <label for="email"> Email (Optional):</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="txtFeedbackEmail" name="email" required>
                             </div>
                         </div>
+
+                        <!--Submit Button-->
                         <div class="row">
                             <div class="col-sm-12 form-group">
-                                <button type="submit" class="btn btn-lg btn-warning btn-block" >Submit </button>
+                                <button id='btnFeedbackSubmit' type="submit" class="btn btn-lg btn-warning btn-block" >Submit </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
 
+                    <!--Return error or success message-->
                     <div id="success_message" style="width:100%; height:100%; display:none; "> <h3>Posted your feedback successfully!</h3> </div>
                     <div id="error_message" style="width:100%; height:100%; display:none; "> <h3>Error</h3> Sorry there was an error sending your form. </div>
-
                 </div>
             </div>
         </div>
-	</div>
+    </div>
+    <!--Reference to js file-->
+    <script src="form.js"></script>
 </body>
-
 
 <!--Footer-->
 <footer>

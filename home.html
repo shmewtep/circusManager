@@ -1,11 +1,23 @@
+<!--
+
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   home.html
+
+-->
+
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 
 <head>
 
 	<!--Stylesheets-->
-
+    <meta charset="utf-8">
     <link rel="stylesheet" href="style.css">
 
     <!-- Firebase App is always required and must be first -->
@@ -14,9 +26,11 @@
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
+    <script src="firebase.json"></script>
 
+    <!--Initialize Firebase-->
     <script>
-    // Initialize Firebase
     var config = {
         apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
         authDomain: "circus-manager-a607b.firebaseapp.com",
@@ -29,9 +43,8 @@
     </script>
 
 	<!--Document title script-->
-
 	<script>
-		document.title = "Home"
+		document.title = "CDZ-Home"
 	</script>
 
 </head>
@@ -39,34 +52,36 @@
 <body>
 
 	<!--Background-->
-
     <div class="bgimage">
-        <button class="linklike-button" id="linkLogout">log out</button>
+
+        <!--Welcome message-->
+        <p id='welcomeText' style='display:inline'></p>
+
+        <!--signout link-->
+        <button class="linklike-button" id="linkLogout" style = 'display:inline'>log out</button>
 
 		<!--Title-->
-
         <span id="cirquedezack">Cirque de Zack</span>
 
 		<!--Site Nav Menu-->
-
 		<div class="vertical-menu">
 			<a href="#" class="active">Home</a>
-			<a href="#shows.html" class="active">Shows</a>
-			<a href="#feedback.html" class="active">Feedback</a>
+			<a href="#shows.html" class="active" id='btnShows'>Shows</a>
+            <a href="#feedback.html" class="active" id='btnFeedback'>Feedback</a>
+            <a href id='btnPayroll' style='display:none'><button>Payroll</button></a>
+            <a href id='btnEditShows' style='display:none'><button>Edit Shows</button></a>
 		</div>
-
     </div>
+
+    <!--Link to JS file-->
     <script src="circusManagerHome.js"></script>
 </body>
 
 <!--Footer-->
-
 <footer>
-
 	<p>Posted by: CDZ LLC</p>
     <p>Contact information: <a href="mailto:ccaleb700@gmail.com">
     cdzmanager@cirquez.com</a>.</p>
-
 </footer>
 
 </html>

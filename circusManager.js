@@ -1,13 +1,22 @@
+/*
+*
+*   Kelsey Rook & Caleb Whitman
+*   Circus Project
+*   Software Engineering
+*   Andrews University
+*   12/12/2018
+*
+*   circusManager.js
+*
+*/
+
+//initialize firebase primary consts
+
 const auth = firebase.auth();
-const db = firebase.firestore();
-const settings = {
-    timestampsInSnapshots: true
-};
-db.settings(settings);
+const db = firebase.database();
 
 //import * as cors from 'cors';
 //const corsHandler = cors({origin:true});
-//
 
 const txtEmail = document.getElementById("txtEmail");
 const txtPassword = document.getElementById("txtPassword");
@@ -24,12 +33,25 @@ const txtLastName = document.getElementById('txtLastName');
 const txtPasswordConfirm = document.getElementById('txtPasswordConfirm');
 const txtEmailSignup = document.getElementById("txtEmailSignup");
 const txtPasswordSignup = document.getElementById("txtPasswordSignup");
+const txtUsername = document.getElementById('welcomeText');
 
+//================================================Login scripts================================================
+
+//Confirm login state
+user = auth.currentUser;
+console.log("user: ", user);
+if (user) {
+    console.log("user: ", user);
+    document.location.href = 'home.html';
+}
+
+//Button to open sign in window
 linkLogin.addEventListener('click', e => {
     console.log('clicked');
     loginBox.style.display = 'block';
 })
 
+//Button to sign in (confirms email & pass)
 btnSignin.addEventListener('click', e => {
     console.log("login triggered");
     const email = txtEmail.value;
@@ -44,10 +66,12 @@ btnSignin.addEventListener('click', e => {
         var errorMessage = error.message;
         
         window.alert("Error : " + errorMessage);
+    }).then(function() {
+        document.location.href = 'home.html';
     });
 });
 
-
+//Exit the sign in form
 btnLoginExit.addEventListener('click', e => {
     signupForm.style.display= 'none';
     loginForm.style.display = 'block';
@@ -55,8 +79,7 @@ btnLoginExit.addEventListener('click', e => {
     loginBox.style.height = '420px';
 });
 
-
-
+//Redirect users that have logged in
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         console.log("user logged in");
@@ -67,29 +90,32 @@ firebase.auth().onAuthStateChanged(function(user) {
     }
   });
 
+//===================================================Sign up scripts============================================
 
-  /* SIGN-UP SCRIPTS */
-
-
+//Button to open sign up form
 linkSignup.addEventListener('click', e => {
     console.log('signup page');
     signupForm.style.display = 'block';
     loginForm.style.display = 'none';
     loginBox.style.height = '540px';
-
 });
 
+//Button to submit signup information
 btnSignupSubmit.addEventListener('click', e => {
     var firstName_ = txtFirstName.value;
-    var LastName_ = txtLastName.value;
+    var lastName_ = txtLastName.value;
     var email_ = txtEmailSignup.value;
     var password = txtPasswordSignup.value;
     var passwordConfirm = txtPasswordConfirm.value;
     if (password != passwordConfirm) {
+        //password and confirm password from sign up form are not the same.
         alert("Passwords do not match.");
     }
     else {
+        //creating new user account
+        //unique ID
         var uid;
+       
         auth.createUserWithEmailAndPassword(email_, password).catch(function(error) {
             var errorCode = error.code;
             var errorMessage = error.message;
@@ -97,45 +123,28 @@ btnSignupSubmit.addEventListener('click', e => {
         }).then(function(user) {
             user = auth.currentUser;
             uid = user.uid;
-            var users = db.collection('users');
-            users.doc(uid).set({
+            //Putting user information in database under a unique id under "users"
+            db.ref('users/' + uid).set({
                 firstName: firstName_,
-                lastName: LastName_,
+                lastName: lastName_,
                 email: email_,
-                userTypes: {customer: true, employee: false, manager: false}, 
+                //user type
+                role: 'customer' 
             }).then(function() {
+                //returns user to login
                 alert("Please log in with your new account credentials.");
-                signupForm.style.form = 'none';
-                loginForm.style.form = 'block';
+                
+                //closes the signup and login forms
+                signupForm.style.display = 'none';
+                loginForm.style.display = 'block';
                 loginBox.style.height='420px';
 
             }).catch(function(error) {
+                //couldnt add user to database
                 console.error("Error adding document: ", error);
             });
         });
 
-        /*var users = db.collection('users');
-        users.doc(uid).set({
-            firstName: firstName_,
-            lastName: LastName_,
-            email: email_,
-            userTypes: {customer: true, employee: false, manager: false}, 
-        }).then(function(docRf) {
-            console.log("Document written with ID: ", docRef.id)
-        }).catch(function(error) {
-            console.error("Error adding document: ", error);
-        });*/
-
     }
 });
 
-
-function validatePw() {
-  var password = document.getElementById("txtPassword").value;
-  var confirmPassword = document.getElementById("txtConfirmPassword").value;
-  if (password != confirmPassword) {
-      alert("Passwords do not match.");
-      return false;
-  }
-  return true;
-}

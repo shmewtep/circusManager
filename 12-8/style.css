@@ -1,0 +1,235 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/*
+*===================================================Background CSS============================================================
+*/
+
+.bgimage {
+    background-image: url("images/becky-phan-23122-unsplash.jpg");
+    height: 100%;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+
+}
+
+/*
+*=================================================Title CSS====================================================================
+*/
+
+#cirquedezack {
+    font-family: marshmallow;
+    color: white;
+    position: absolute;
+    text-align: center;
+    font-size: 65px;
+    top: 25px;
+    width: 100%
+    
+}
+
+/*
+*===================================================Font CSS==================================================================
+*/
+
+@font-face {
+    font-family: marshmallow;
+    src: url(fonts/Marshmallow\ Personal\ Use.ttf);
+}
+
+/*
+*===================================================Login Form CSS=============================================================
+*/
+
+.loginBox {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 420px;
+    padding: 40px 40px;
+    box-sizing: border-box;
+    background: rgba(0,0,0,.7);
+}
+
+#testing {
+    width:70px;
+    height:70px;
+}
+
+.loginBox h2 {
+    margin: 0;
+    padding: 0 0 20px;
+    color: #84dbdb;
+	text-align: center;
+}
+
+.loginBox p
+{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+
+.loginBox input
+{
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.loginBox input[type="text"],
+.loginBox input[type="password"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+
+.hoverButton
+{
+    width: 100%;
+	margin-bottom: 20px;
+	border: none;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	background: #84dbdb;
+	cursor: pointer;
+	border-radius: 20px;
+}
+.hoverButton:hover
+{
+	background: #efed40;
+	color: #262626;
+}
+.loginBox a
+{
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+/*
+*==============================================Site Nav Menu CSS===========================================================================
+*/
+
+.vertical-menu {
+    position: absolute;
+    top: 25%;
+    left: 0%;
+    width: 200px; /* Set a width if you like */
+}
+
+.vertical-menu a {
+    text-align: center;
+    font-family: marshmallow;
+    background-color: #eee; /* Grey background color */
+    color: black; /* Black text color */
+    display: block; /* Make the links appear below each other */
+    padding: 12px; /* Add some padding */
+    text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+    background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+    background-color: #4CAF50; /* Add a green color to the "active/current" link */
+    color: white;
+}
+
+footer { 
+    display: block;
+    background: #84dbdb;
+    text-align: center;
+} 
+
+/*
+*===============================================Feedback Form CSS==========================================================================
+*/
+
+body {
+	background-color: #000;
+}
+
+
+html,
+body {
+	height: 100%;
+}
+
+
+.form-container
+{
+
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%,30%);
+    background-color: #fff;
+
+    box-shadow: 0 16px 24px 2px rgba(0,0,0,0.14), 0 20px 30px 5px rgba(0,0,0,0.12), 0 8px 10px -5px rgba(0,0,0,0.3);
+
+    border-radius: 8px;
+    
+font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+
+}
+
+/*
+*===============================================Feedback Date Selector CSS==================================================================
+*/
+
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+
+.note {
+    font-size: .8em;
+}
+
+/* Button styles */
+
+.linklike-button {
+    background: none;
+    color: lightblue;
+    border: none; 
+    padding: 0;
+    font: inherit;
+    border-bottom:1px solid #444; 
+    cursor: pointer;
+}
+
+.exitButton {
+    background: none;
+    border: none;
+    color: lightblue;
+}
+
+#welcomeText {
+    color: lightblue;
+    font: inherit;
+    padding: 0;
+}

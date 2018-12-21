@@ -1,19 +1,29 @@
-﻿<!DOCTYPE html>
+﻿<!--
 
-<html>
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   shows.html
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
 
 	<!--Stylesheets-->
-
     <link rel="stylesheet" href="style.css">
 
     <!-- Firebase App is always required and must be first -->
     <!-- Add additional services that you want to use -->
-    
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-database.js"></script>
 
     <script>
     // Initialize Firebase
@@ -29,36 +39,81 @@
     </script>
 
 	<!--Document title script-->
-
 	<script>
-		document.title = "Shows"
-	</script>
+		document.title = "CDZ-Shows"
+    </script>
+    
+    <!--Script to initialize and connect to EmailJS-->
+    <script type="text/javascript" src="https://cdn.emailjs.com/sdk/2.2.4/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_fsQWH1qdm2sUP8hmaruPw");
+        })();
+    </script>
 
 </head>
 
 <body>
 
 	<!--Background-->
-
     <div class="bgimage">
 
-		<!--Title-->
+        <!--Welcome message-->
+        <p id='welcomeText' style='display:inline'></p>
 
+        <!--logout button-->
+        <button class="linklike-button" id="linkLogout" style = 'display:inline'>log out</button>
+
+		<!--Title-->
         <span id="cirquedezack">Cirque de Zack</span>
 
 		<!--Site Nav Menu-->
-
 		<div class="vertical-menu">
-			<a href="#" class="active">Home</a>
-			<a href="#shows.html" class="active">Shows</a>
-			<a href="#feedback.html" class="active">Feedback</a>
-		</div>
+			<a href="#" class="active" id='btnHome'>Home</a>
+			<a href="#shows.html" class="active" id='btnShows'>Shows</a>
+            <a href="#feedback.html" class="active" id='btnFeedback'>Feedback</a>
+            <a href id='btnPayroll' style='display:none'><button>Payroll</button></a>
+            <a href id='btnEditShows' style='display:none'><button>Edit Shows</button></a>
+        </div>
+        
+        <!--Show Display block-->
+        <div id='showsDisplay' class='displayBlock'>
+            <ul id='displayShows'>
+            </ul>
+        </div>
 
+        <!--Ticket Purchasing Panel-->
+        <div id='showDetails' class='loginBox' style='display:none'>
+            <button id='btnTicketExit' class='exitButton'>&#10006</button>
+            <div id='detailsPane'>
+                <p id='txtDate'>Date: </p>
+                <p id='txtLocation'>Location: </p>
+                <p>Number of tickets: </p>
+                <input id='numTickets' type='text'>
+                <p id='total'>Total: </p>
+                <button id='buyTickets' class='hoverButton'>Buy Tickets</button>
+            </div>
+
+            <!--Confirm purchase-->
+            <div id='confirmPane' style='display:none'>
+                <h4 style='color:lightblue'>Thank you for purchasing!</h4>
+                <h4 style='color:lightblue'>Check your email for your ticket confirmation.</h4>
+                <h4 id = 'msgVote' style='color:lightblue'>Please take a moment to vote on up to three acts you would most like to see during your circus experience.</h4>
+
+                <!--Voting for desired acts-->
+                <form id='actsForm'>
+                    
+                </form>
+                <h4 id='msgThanks' style='color:lightblue'>Thank you for voting. We hope you enjoy the show!</h4>
+            </div>
+        </div>
     </div>
+
+    <!--Link to JS file-->
+    <script src="showshower.js"></script>
 </body>
 
 <!--Footer-->
-
 <footer>
 
 	<p>Posted by: CDZ LLC</p>

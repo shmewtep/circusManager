@@ -1,0 +1,183 @@
+<!--
+
+   Kelsey Rook & Caleb Whitman
+   Circus Project
+   Software Engineering
+   Andrews University
+   12/12/2018
+
+   payroll.html
+
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+	<!--Stylesheets-->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+    <!-- Firebase App is always required and must be first -->
+    <!-- Add additional services that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.5.7/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAesy3gZF6wtgZEk2yFEIzadym-GdzDRNU",
+        authDomain: "circus-manager-a607b.firebaseapp.com",
+        databaseURL: "https://circus-manager-a607b.firebaseio.com",
+        projectId: "circus-manager-a607b",
+        storageBucket: "circus-manager-a607b.appspot.com",
+        messagingSenderId: "547116975201"
+    };
+    firebase.initializeApp(config);
+    </script>
+
+	<!--Document title script-->
+	<script>
+		document.title = "CDZ-Payroll"
+	</script>
+
+</head>
+
+<body>
+
+    <!--Background-->
+    <div class="bgimage">
+
+        <!--Welcome message-->
+        <p id='welcomeText' style='display:inline'></p>
+
+        <!--logout button-->
+        <button class="linklike-button" id="linkLogout" style = 'display:inline'>log out</button>
+
+	    <!--Title-->
+        <span id="cirquedezack">Cirque de Zack</span>
+
+        <!--Site Nav Menu-->
+		<div class="vertical-menu">
+                <a href="home.html" id ='btnHome'><button>Home</button></a>
+                <a href="shows.html" id='btnShows'><button>Shows</button></a>
+                <a href="#" id='btnFeedback'><button>Feedback</button></a>
+                <a href id='btnPayroll' style='display:none'><button>Payroll</button></a>
+                <a href id='btnEditShows' style='display:none'><button>Edit Shows</button></a>
+        </div>
+
+        <!-- Grid of act buttons -->
+        <div class="wrapper">
+            <button class="hoverButton" id="clowns">Clowns</button>
+            <button class="hoverButton" id="contortionists">Contortionists</button>
+            <button class="hoverButton" id="cyrWheel">Cyr Wheel</button>
+            <button class="hoverButton" id="elephants">Elephants</button>
+            <button class="hoverButton" id="fireJuggling">Fire Juggling</button>
+            <button class="hoverButton" id="highwire">Highwire</button>
+            <button class="hoverButton" id="humanCannonball">Human Cannonball</button>
+            <button class="hoverButton" id="lionTaming">Lion Taming</button>
+            <button class="hoverButton" id="trapeze">Trapeze</button>
+        </div> 
+
+        <!--Display payroll by act-->
+        <div class="loginBox" id="clownsBox" style="display:none">
+            <button id="btnclownsExit" class="exitButton">&#10006</button>
+                
+            <div><pre id="clownsPay"></pre></div>
+        </div>
+
+        <div class="loginBox" id="contortionistsBox" style="display:none">
+            <button id="btncontortionistsExit" class="exitButton">&#10006</button>
+            <div id='contortionistsForm'>
+                
+                <pre id="contortionistsPay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="cyrWheelBox" style="display:none">
+            <button id="btncyrWheelExit" class="exitButton">&#10006</button>
+            <div id='cyrWheelForm'>
+
+                <pre id="cyrWheelPay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="elephantsBox" style="display:none">
+            <button id="btnelephantsExit" class="exitButton">&#10006</button>
+            <div id='elephantsForm'>
+                
+                <pre id="elephantsPay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="fireJugglingBox" style="display:none">
+            <button id="btnfireJugglingExit" class="exitButton">&#10006</button>
+            <div id='fireJugglingForm'>
+                
+                <pre id="fireJugglingPay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="highwireBox" style="display:none">
+            <button id="btnhighwireExit" class="exitButton">&#10006</button>
+            <div id='highwireForm'>
+                
+                <pre id="highwirePay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="humanCannonballBox" style="display:none">
+            <button id="btnhumanCannonballExit" class="exitButton">&#10006</button>
+            <div id='humanCannonballForm'>
+                
+                <pre id="humanCannonballPay"></pre>
+
+            </div>
+        </div>
+
+        <div class="loginBox" id="lionTamingBox" style="display:none">
+            <button id="btnlionTamingExit" class="exitButton">&#10006</button>
+            <div id='lionTamingForm'>
+                
+                <pre id="lionTamingPay"></pre>
+            
+            </div>
+        </div>
+
+        <div class="loginBox" id="trapezeBox" style="display:none">
+            <button id="btntrapezeExit" class="exitButton">&#10006</button>
+            <div id='trapezeForm'>
+                
+                <pre id="trapezePay"></pre>
+            
+            </div>
+        </div>
+
+    </div>
+
+    <!--Link to JS file-->
+    <script src="payroll.js"></script>
+    
+</body>
+
+<!--Footer-->
+<footer>
+
+	<p>Posted by: CDZ LLC</p>
+    <p>Contact information: <a href="mailto:ccaleb700@gmail.com">
+    cdzmanager@cirquez.com</a>.</p>
+
+</footer>
+
+</html>
